@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Mars Info</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">      
+    </head>
+    <body>
+        <div class="container">
+            <div class="jumbotron text-center">
+                <h1 class="font-weight-bold">Mission to Mars</h1>
+                <p><a class="btn btn-primary" href="../scrape" role="button">Scrape Data</a></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12"></div>
+            <h4>{{mars.mars_news}}</h4>
+            <p>{{mars.mars_p}}</p>
+        </div>
+        <div class="row">
+            <div class="col col-md-8">
+                <h2>Featured Mars Image</h2>
+                <img src="{{mars.featured_image}}" alt="Featured Image"
+            </div>
+            <div class="col col-md 4">
+                <h3>Mars Facts</h3>
+                {{mars.mars_facts | safe}}
+            </div>
+        </div>
+        <div class="row">
+            <h2>Mars Hemispheres</h2>
+            {% for img in mars.mars_hemispheres %}
+            <img src="{{img.img_url}}" alt="{{img.title}}">
+            <p>{{img.title}}</p>
+            {% endfor %}
+        </div>
+    </body>
+</html>
