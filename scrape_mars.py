@@ -26,11 +26,9 @@ def scrape():
     browser.visit(mars_facts_url)
     html = browser.html
     soup = bs(html,'html.parser')
-    df = pd.read_html(mars_facts_url)[1].transpose()
-    df.columns = df.iloc[0]
-    df.drop(0,inplace=True)
-    df.reset_index(drop=True, inplace=True)
-    tableresult = df.to_html(index=False)
+    df = pd.read_html(mars_facts_url)[1]
+    table = df.to_html(index=False,header=False)
+    tableresult=table.replace('\n','')
     #Mars Hemispheres
     astrogeology_url = 'https://marshemispheres.com/'
     browser.visit(astrogeology_url)

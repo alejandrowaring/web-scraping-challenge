@@ -5,7 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Mars Info</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">      
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <style>
+            body {background-color:lightgray;
+            color:black;}
+        </style>
     </head>
     <body>
         <div class="container">
@@ -13,28 +17,42 @@
                 <h1 class="font-weight-bold">Mission to Mars</h1>
                 <p><a class="btn btn-primary" href="../scrape" role="button">Scrape Data</a></p>
             </div>
-        </div>
         <div class="row">
-            <div class="col-md-12"></div>
-            <h4>{{mars.mars_news}}</h4>
-            <p>{{mars.mars_p}}</p>
-        </div>
-        <div class="row">
-            <div class="col col-md-8">
-                <h2>Featured Mars Image</h2>
-                <img src="{{mars.featured_image}}" alt="Featured Image"
+            <div class="col-md-12">
+                <h4>{{mars.mars_news}}</h4>
+                <p>{{mars.mars_p}}</p>
             </div>
-            <div class="col col-md 4">
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-8 ">
+              <h2 class=""><u>Featured Mars Image</u></h2> 
+              </br>
+              <img class="col-md-12 " src="{{mars.mars_img}}" alt="Features Mars Image">
+            </div>
+            <div class="col-md-4">
                 <h3>Mars Facts</h3>
-                {{mars.mars_facts | safe}}
+                  {{ mars.mars_facts | safe}}
+            </div>
+          </div>
+          <hr>
+        <div class="row">
+            <div class="col-md-8">
+                <h2 class="align-middle">Mars Hemispheres</h2>
             </div>
         </div>
         <div class="row">
-            <h2>Mars Hemispheres</h2>
             {% for img in mars.mars_hemispheres %}
-            <img src="{{img.img_url}}" alt="{{img.title}}">
-            <p>{{img.title}}</p>
+            <div class="col-6">
+                <div>
+                    <img src="{{img.img_url}}" alt="{{img.title}}" width="512 px" height="512 px">
+                </div>
+                <div>
+                    <p>{{img.title}}</p>
+                </div>
+            </div>
             {% endfor %}
         </div>
+    </div>
     </body>
 </html>
